@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Travel Buddy - Travels</title>
+    {% load staticfiles %}
+     <!-- The line above tells Django to be ready to listen for static files -->
+     <link rel="stylesheet" href="{% static 'css/new_travels.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+      <h1>Hello, {{request.session.name}}!</h1>
+      {% if messages %}
+          {% for message in messages %}
+            <p>{{ message }}</>
+          {% endfor %}
+      {% endif %}
+      <h2>Your Trip Schedules</h2>
+      <table>
+            <tr>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Plan</th>
+            </tr>
+            {% for trip in trips %}
+              <tr>
+                  <td><a href="/travels/destination/{{trip.id}}">{{trip.destination}}</a></td>
+                  <td>{{trip.start_date}}</td>
+                  <td>{{trip.end_date}}</td>
+                  <td>{{trip.description}}</td>
+              </tr>
+            {% endfor %}
+      </table>
+      <h2>Other User's Travel Plans</h2>
+      <table>
+            <tr>
+                <th>Name</th>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Do You Want to Join?</th>
+            </tr>
+            {% for trip in other_trips %}
+            <tr>
+                <td>{{trip.planner.name}}</td>
+                <td><a href="/travels/destination/{{trip.id}}">{{trip.destination}}</a></td>
+                <td>{{trip.start_date}}</td>
+                <td>{{trip.end_date}}</td>
+                <td><a href="/join/{{trip.id}}">Join</a></td>
+            </tr>
+            {% endfor %}
+      </table>
+      <a href="/travels/add">Add a Trip</a><br>
+      <a href="/logout">LOG OUT</a>
+  </body>
+</html>

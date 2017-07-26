@@ -1,0 +1,42 @@
+body{
+    background-color: #003166;
+    color: #1C8B85;
+    font-family: arial;
+}
+
+h1{
+    color: #1C8B85;
+    font-family: cursive;
+}
+
+p{
+    color: #C0C0C0;
+    font-family: arial;
+}
+
+a{
+    color: #C0C0C0;
+    /*text-decoration: none;*/
+}
+
+table{
+    width: 1200px;
+    border: 1px solid white;
+    text-align: center;
+}
+
+th{
+    border: 1px solid white;
+    text-align: center;
+}
+
+td{
+    border: 1px solid white;
+    color: #C0C0C0;
+    text-align: center;
+}
+
+span{
+    color: #1C8B85;
+    font-family: arial;
+}

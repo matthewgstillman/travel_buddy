@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Destination</title>
+    {% load staticfiles %}
+     <!-- The line above tells Django to be ready to listen for static files -->
+     <link rel="stylesheet" href="{% static 'css/new_travels.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+      <h1>Destination</h1>
+      {% for trip in other_trips %}
+        <h1>{{ trip.destination }}</h1>
+        <p><span>Planned By: </span>{{ trip.planner.username }}</p>
+        <p><span>Description: </span>{{trip.description}}</p>
+        <p><span>Travel Date From: </span>{{trip.start_date}}</p>
+        <p><span>Travel Date To: </span>{{trip.end_date}}</p>
+      {% endfor %}
+      <h1>Other Users Joining The Trip</h1>
+        {% for traveler in travelers %}
+        <p>{{traveler.name}}</p>
+        {% endfor %}
+        <a href="/travels">Home</a><br>
+        <a href="/logout">LOG OUT</a>
+  </body>
+</html>
